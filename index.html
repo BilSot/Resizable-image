@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body {
+				background-color: linen;
+				padding:30px;
+				margin: 0;
+			}
+			#canvas {
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<p>Resize the image using the 4 draggable corner anchors</p>
+		<p>You can also drag the image</p>
+		<canvas id="canvas" width=850 height=650></canvas>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="js/canvas.js"></script>
+		<script src="js/imageRectangle.js"></script>
+		<script src="js/anchorBullets.js"></script>
+		<script type="text/javascript">
+			var canvasToJson;
+			var canvas = document.getElementById("canvas");
+			
+//			if (localStorage.getItem("image_canvas") !== null){
+//				canvasObj = JSON.parse(localStorage.getItem("image_canvas"));
+//			}else{
+//				canvasObj = new Canvas();
+//			}
+			canvasObj = new Canvas(canvas);
+
+			canvas.addEventListener("mousedown", function (event) {
+				canvasObj.handleMouseDown(event);
+			});
+			canvas.addEventListener("mousemove", function (event) {
+				canvasObj.handleMouseMove(event);
+			});
+			canvas.addEventListener("mouseup", function () {
+				canvasObj.handleMouseUp();
+			});
+			canvas.addEventListener("mouseout", function () {
+				canvasObj.handleMouseOut();
+//				canvasToJson = JSON.stringify(canvasObj);
+//				localStorage.setItem("image_canvas", canvasToJson);
+			});
+
+		</script>
+	</body>
+</html>
